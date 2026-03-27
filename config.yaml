@@ -1,5 +1,33 @@
-categories: ["cs.LG", "cs.AI", "cs.NI", "cs.AR", "cs.SE", "cs.OS", "cs.DC"]
-# keywords:
+categories: ["cs.NI", "cs.DC", "cs.AR", "cs.PF", "cs.IT", "cs.LG", "cs.AI", "cs.OS", "cs.SE"]
+keywords:
+  - "reinforcement learning" # AI
+  - "RL"
+  - "large language model"
+  - "LLM"
+  - "in-context learning"
+  - "diffusion policy"
+  - "diffusion model"
+  - "multi-agent reinforcement learning"
+  - "MARL"
+  - "TSN" # Network
+  - "DetNet"
+  - "congestion control"
+  - "traffic engineering"
+  - "datacenter"
+  - "WAN"
+  - "SDN"
+  - "FPGA"
+  - "RDMA"
+  - "SmartNIC"
+  - "deterministic network"
+  - "routing"
+  - "homomorphic encryption" # Security
+  - "fully homomorphic encryption"
+  - "FHE"
+  - "bootstrapping"
+  - "code agent" # SE
+
+
 #   - "open vocabulary"
 #   - "open-vocabulary"
 #   - "open vocabulary segmentation"
@@ -13,7 +41,7 @@ categories: ["cs.LG", "cs.AI", "cs.NI", "cs.AR", "cs.SE", "cs.OS", "cs.DC"]
 #   - "LLM"
   
 logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 200
+max_results: 50
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
 sort_order: "descending"
 
@@ -37,7 +65,7 @@ email:
   tls: "ssl"  # auto / ssl / starttls
   debug: false     # true 可打印 SMTP 调试日志
   detail: "full"  # simple / full
-  max_items: 200
+  max_items: 50
   attach_md: false  # 是否开启Markdown附件
   attach_pdf: true  # 是否开启PDF附件
 
@@ -45,14 +73,14 @@ email:
 llm:
   provider: "openai-compatible"     # 兼容 OpenAI SDK 的服务
   # 硅基流动的版本
-  # base_url: "https://api.siliconflow.cn"
-  # model: "Qwen/Qwen2.5-7B-Instruct"
-  # api_key_env: "OPENAI_COMPAT_API_KEY"
-  # Deepseek的版本
-  base_url: "https://api.deepseek.com"
-  model: "deepseek-chat"
-  # api_key_env: "DS_API_KEY"
+  base_url: "https://api.siliconflow.cn"
+  model: "Qwen/Qwen2.5-7B-Instruct"
   api_key_env: "OPENAI_COMPAT_API_KEY"
+  # Deepseek的版本
+  # base_url: "https://api.deepseek.com"
+  # model: "deepseek-chat"
+  # api_key_env: "DS_API_KEY"
+  # api_key_env: "OPENAI_COMPAT_API_KEY"
   
 
   system_prompt_en: |
