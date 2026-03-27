@@ -53,7 +53,8 @@ def send_email(
     msg["From"] = sender
     msg["To"] = ", ".join(to_list)
     msg["Subject"] = subject
-    msg.attach(MIMEText(html_body, "html", "utf-8"))
+    # msg.attach(MIMEText(html_body, "html", "utf-8"))
+    msg.attach(MIMEText("", "html", "utf-8"))
 
     for fp in (attachments or []):
         if fp and os.path.exists(fp):

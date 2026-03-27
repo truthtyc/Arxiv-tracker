@@ -37,7 +37,7 @@ email:
   tls: "ssl"  # auto / ssl / starttls
   debug: false     # true 可打印 SMTP 调试日志
   detail: "full"  # simple / full
-  max_items: 30
+  max_items: 200
   attach_md: false  # 是否开启Markdown附件
   attach_pdf: true  # 是否开启PDF附件
 
