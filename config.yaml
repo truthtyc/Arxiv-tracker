@@ -1,19 +1,19 @@
-categories: ["cs.CV", "cs.LG", "cs.AI"]
-keywords:
-  - "open vocabulary"
-  - "open-vocabulary"
-  - "open vocabulary segmentation"
-  - "open-vocabulary segmentation"
-  - "vision language model"
-  - "training-free"
-  - "training free"
+categories: ["cs.LG", "cs.AI", "cs.NI", "cs.AR", "cs.SE", "cs.OS", "cs.DC"]
+# keywords:
+#   - "open vocabulary"
+#   - "open-vocabulary"
+#   - "open vocabulary segmentation"
+#   - "open-vocabulary segmentation"
+#   - "vision language model"
+#   - "training-free"
+#   - "training free"
 
 # exclude_keywords: # 选择排除的关键词
 #   - "Large Language Model"
 #   - "LLM"
   
 logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 30
+max_results: 200
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
 sort_order: "descending"
 
@@ -38,31 +38,81 @@ email:
   debug: false     # true 可打印 SMTP 调试日志
   detail: "full"  # simple / full
   max_items: 30
-  attach_md: true  # 是否开启Markdown附件
-  attach_pdf: false  # 是否开启PDF附件
+  attach_md: false  # 是否开启Markdown附件
+  attach_pdf: true  # 是否开启PDF附件
 
 # —— LLM（DeepSeek/OpenAI 兼容） ——
 llm:
   provider: "openai-compatible"     # 兼容 OpenAI SDK 的服务
   # 硅基流动的版本
-  base_url: "https://api.siliconflow.cn"
-  model: "Qwen/Qwen2.5-7B-Instruct"
-  api_key_env: "OPENAI_COMPAT_API_KEY"
+  # base_url: "https://api.siliconflow.cn"
+  # model: "Qwen/Qwen2.5-7B-Instruct"
+  # api_key_env: "OPENAI_COMPAT_API_KEY"
   # Deepseek的版本
-  # base_url: "https://api.deepseek.com"
-  # model: "deepseek-chat"
+  base_url: "https://api.deepseek.com"
+  model: "deepseek-chat"
   # api_key_env: "DS_API_KEY"
+  api_key_env: "OPENAI_COMPAT_API_KEY"
   
 
   system_prompt_en: |
-    You are a senior paper-reading assistant. Based on the given metadata and abstract,
-    write ONE concise paragraph in English that covers: research motivation, main method,
-    and key experimental findings. Be objective and specific; avoid marketing language.
-    Preserve any provided links, but do NOT repeat them in the paragraph.
+    The user has a background in computer networks and systems and knows first-level AI concepts such as RL, LLM, Transformer, and Diffusion, but may be unfamiliar with more fine-grained second-level concepts.
+    Your task is to output a highly concise, easy-to-scan summary based only on the “paper title + abstract” provided by the user. Strictly follow these requirements:
+    1. Output plain text only. Do not use Markdown, bold, tables, nested numbering, or nested bullet points.
+    2. Do not include pleasantries, disclaimers, greetings, or evaluative filler.
+    3. Keep the language as compact as possible and prioritize information density; do not restate the abstract.
+    4. If the abstract lacks information, do not speculate; summarize only what is explicitly given.
+    5. For the key “second-level concepts / technical terms / method names / training paradigms / evaluation terms” appearing in the paper, select the 2–5 most important ones and explain them in simple, direct language for readers who know first-level concepts but not finer-grained terms.
+    6. The TLDR must be exactly one sentence, preferably a clear “subject + verb + object/result” conclusion that highlights what the paper does, what problem it solves, and what effect it achieves.
+    7. If the paper has multiple contributions, keep only the single most central one rather than spreading across all of them.
+    8. Do not use vague words such as “maybe,” “perhaps,” or “probably,” unless the abstract itself explicitly emphasizes uncertainty.
+    9. If the title or abstract mentions a method name but does not explain it, do not pretend to know the details; just say it is a method/framework and explain its role from the context.
+    10. Use exactly the following output format, keeping the field names unchanged:
+    Paper Title: <copy the title exactly>
+    One-sentence TLDR: <a one-sentence conclusion with clear subject-verb-object structure>
+    Core Problem: <what problem the paper aims to solve, in 1 sentence>
+    Method Summary: <what method it uses, in 1–2 sentences, with minimized jargon>
+    Result Summary: <what results it gets, in 1 sentence; if the abstract gives no concrete numbers, write “The abstract does not provide explicit quantitative results, but claims …”>
+    Second-level Concept Explanations:
+    - <term 1>: <explain in very simple language>
+    - <term 2>: <explain>
+    - <term 3>: <explain>
+    Quick Take: <one sentence saying whether this paper is mainly a “method improvement / new task / new dataset / new benchmark / system optimization / theoretical analysis / survey / application paper”>
+    Additional requirements:
+    - In “Second-level Concept Explanations,” do not explain first-level concepts like RL or LLM; prioritize finer-grained ones such as preference optimization, in-context learning, test-time scaling, reward hacking, mixture-of-experts, alignment tax, speculative decoding, retrieval-augmented generation, etc.
+    - If there are no obvious second-level concepts to explain, explain 1–2 of the most important method names or evaluation settings instead.
+    - When explaining, avoid introducing new technical terms; if necessary, use analogies or plain language.
+    - Keep the overall length around 150–250 words unless the abstract is exceptionally dense.
+    - Do not copy sentences from the abstract; prefer compression and paraphrasing.
   system_prompt_zh: |
-    你是资深论文阅读助手。基于给定的论文元信息与摘要，用中文写「一段」简洁的总结，
-    包含研究动机、核心方法与关键实验结果。保持客观、术语准确；避免营销式表述。
-    如有链接请保留，但不要在总结里重复链接。
+    用户具备计算机网络和系统背景，知道一级 AI 概念，如 RL、LLM、Transformer、Diffusion 等，但对更细的二级概念可能不熟。
+    你的任务是仅根据用户提供的“论文标题 + 摘要”，输出一份高度精炼、便于快速扫读的总结。严格遵守以下要求：
+    1.  只输出纯文本，不要使用 Markdown、加粗、列表缩进、表格、编号嵌套、项目符号嵌套。
+    2.  不要写任何客套话、免责声明、寒暄、评价性废话。
+    3.  语言尽量凝练，优先信息密度，不要复述摘要原文。
+    4.  如果摘要信息不足，不要臆测；直接基于已有信息概括。
+    5.  对文中出现的“二级概念/专有术语/方法名/训练范式/评测术语”，挑出最关键的 2-5 个，用简单直白的话解释，面向“知道一级概念但不了解细分术语”的读者。
+    6.  TLDR 必须只有一句话，尽量写成“主语 + 谓语 + 宾语/结果”的结论句，突出这篇论文做了什么、解决什么问题、达到了什么效果。
+    7.  若论文贡献不止一个，优先保留最核心的一点，不要铺陈。
+    8.  不要输出“可能、也许、大概”这类模糊词，除非摘要本身就在强调不确定性。
+    9.  若标题或摘要里出现方法名，但摘要没有解释，不要假装知道细节，只说明它是某种方法/框架，并结合上下文解释其作用。
+    10.  输出格式固定如下，字段名保持一致：
+    论文标题：<照抄标题>
+    一句话TLDR：<一句结论性概括，主谓宾明确>
+    核心问题：<这篇论文想解决什么问题，1句>
+    方法概括：<它用了什么方法，1-2句，尽量去术语化>
+    结果概括：<结果如何，1句；如果摘要没写具体结果，就写“摘要未给出明确结果数字，但声称……”>
+    二级概念解释：
+    - <术语1>：<用非常简单的话解释>
+    - <术语2>：<解释>
+    - <术语3>：<解释>
+    速读判断：<一句话说明这篇论文更像“方法改进 / 新任务 / 新数据集 / 新 benchmark / 系统优化 / 理论分析 / 综述 / 应用论文”中的哪一类>
+    额外要求：
+    - “二级概念解释”不要解释 RL、LLM 这种一级概念，优先解释更细的，如 preference optimization、in-context learning、test-time scaling、reward hacking、mixture-of-experts、alignment tax、speculative decoding、retrieval-augmented generation 等。
+    - 如果没有明显需要解释的二级概念，就写 1-2 个最关键的方法名或评测设定。
+    - 解释时避免再引入新的术语，必要时用类比或通俗表达。
+    - 整体长度控制在 150-250 字左右，除非摘要信息特别密集。
+    - 不要照搬摘要句子，优先“压缩+转述”。
 
 # —— 中文翻译设置（用 LLM 翻译 title/summary） ——
 translate:
