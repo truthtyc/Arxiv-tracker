@@ -1,14 +1,14 @@
-categories: ["cs.NI", "cs.DC", "cs.AR", "cs.PF", "cs.IT", "cs.LG", "cs.AI", "cs.OS", "cs.SE"]
+categories: ["cs.NI", "cs.DC", "cs.AR"]
 keywords:
-  - "reinforcement learning" # AI
-  - "RL"
-  - "large language model"
-  - "LLM"
-  - "in-context learning"
-  - "diffusion policy"
-  - "diffusion model"
-  - "multi-agent reinforcement learning"
-  - "MARL"
+  # - "reinforcement learning" # AI
+  # - "RL"
+  # - "large language model"
+  # - "LLM"
+  # - "in-context learning"
+  # - "diffusion policy"
+  # - "diffusion model"
+  # - "multi-agent reinforcement learning"
+  # - "MARL"
   - "TSN" # Network
   - "DetNet"
   - "congestion control"
