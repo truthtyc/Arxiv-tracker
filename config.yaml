@@ -9,23 +9,23 @@ keywords:
   # - "diffusion model"
   # - "multi-agent reinforcement learning"
   # - "MARL"
-  - "TSN" # Network
-  - "DetNet"
-  - "congestion control"
-  - "traffic engineering"
-  - "datacenter"
-  - "WAN"
-  - "SDN"
-  - "FPGA"
-  - "RDMA"
-  - "SmartNIC"
-  - "deterministic network"
-  - "routing"
-  - "homomorphic encryption" # Security
-  - "fully homomorphic encryption"
-  - "FHE"
-  - "bootstrapping"
-  - "code agent" # SE
+  # - "TSN" # Network
+  # - "DetNet"
+  # - "congestion control"
+  # - "traffic engineering"
+  # - "datacenter"
+  # - "WAN"
+  # - "SDN"
+  # - "FPGA"
+  # - "RDMA"
+  # - "SmartNIC"
+  # - "deterministic network"
+  # - "routing"
+  # - "homomorphic encryption" # Security
+  # - "fully homomorphic encryption"
+  # - "FHE"
+  # - "bootstrapping"
+  # - "code agent" # SE
 
 
 #   - "open vocabulary"
