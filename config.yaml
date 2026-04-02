@@ -1,31 +1,31 @@
-categories: ["cs.NI", "cs.DC", "cs.AR"]
-# keywords:
-  # - "reinforcement learning" # AI
-  # - "RL"
+categories: ["cs.NI", "cs.DC", "cs.AR", "cs.LG", "cs.AI", "cs.SE", "cs.CR"]
+keywords:
+  - "reinforcement learning" # AI
+  - "RL"
   # - "large language model"
   # - "LLM"
   # - "in-context learning"
-  # - "diffusion policy"
-  # - "diffusion model"
-  # - "multi-agent reinforcement learning"
-  # - "MARL"
+  - "diffusion policy"
+  - "diffusion model"
+  - "multi-agent reinforcement learning"
+  - "MARL"
   # - "TSN" # Network
-  # - "DetNet"
-  # - "congestion control"
-  # - "traffic engineering"
-  # - "datacenter"
-  # - "WAN"
-  # - "SDN"
-  # - "FPGA"
-  # - "RDMA"
-  # - "SmartNIC"
-  # - "deterministic network"
-  # - "routing"
-  # - "homomorphic encryption" # Security
-  # - "fully homomorphic encryption"
-  # - "FHE"
-  # - "bootstrapping"
-  # - "code agent" # SE
+  - "DetNet"
+  - "congestion control"
+  - "traffic engineering"
+  - "datacenter"
+  - "WAN"
+  - "SDN"
+  - "FPGA"
+  - "RDMA"
+  - "SmartNIC"
+  - "deterministic network"
+  - "routing"
+  - "homomorphic encryption" # Security
+  - "fully homomorphic encryption"
+  - "FHE"
+  - "bootstrapping"
+  - "code agent" # SE
 
 
 #   - "open vocabulary"
