@@ -78,7 +78,7 @@ llm:
   # api_key_env: "OPENAI_COMPAT_API_KEY"
   # Deepseek的版本
   base_url: "https://api.deepseek.com"
-  model: "deepseek-chat"
+  model: "deepseek-v4-flash"
   api_key_env: "DS_API_KEY"  
 
   system_prompt_en: |
